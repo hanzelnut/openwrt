@@ -898,6 +898,29 @@ define Device/tplink_archer-mr200
 endef
 TARGET_DEVICES += tplink_archer-mr200
 
+define Device/tplink-safeloader
+  MTK_SOC := mt7620a
+  DEVICE_VENDOR := TP-Link
+  TPLINK_BOARD_ID :=
+  TPLINK_HWID := 0x0
+  TPLINK_HWREV := 0
+  TPLINK_HEADER_VERSION := 1
+  
+  KERNEL := $(KERNEL_DTB)
+  KERNEL_INITRAMFS := $(KERNEL_DTB) | tplink-v1-header -e
+endef
+
+define Device/tplink_re210v1
+  $(Device/tplink-safeloader)
+  DEVICE_MODEL := RE210v1
+  DEVICE_VARIANT := v1
+  DEVICE_PACKAGES := kmod-mt76x0e kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+  TPLINK_BOARD_ID := RE210-V1
+  IMAGE_SIZE := 6912k
+  SUPPORTED_DEVICES += re210v1
+endef
+TARGET_DEVICES += tplink_re210v1
+
 define Device/vonets_var11n-300
   MTK_SOC := mt7620n
   IMAGE_SIZE := 3776k

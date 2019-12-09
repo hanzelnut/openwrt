@@ -137,6 +137,7 @@ ramips_setup_interfaces()
 	ravpower,wd03|\
 	sercomm,na930|\
 	tama,w06|\
+	tplink,re210v1|\
 	tplink,tl-mr3020-v3|\
 	tplink,tl-wr802n-v4)
 		ucidef_set_interface_lan "eth0"
